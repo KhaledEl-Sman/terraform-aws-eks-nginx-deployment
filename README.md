@@ -54,7 +54,7 @@ aws eks update-kubeconfig --region  --name  --profile
 2. Update the cluster config to enable both public and private endpoint access, allowing your current IP address:
 
 ```bash
-aws eks update-cluster-config --region  --name  --resources-vpc-config endpointPublicAccess=true,endpointPrivateAccess=true,publicAccessCidrs=["/32"]
+aws eks update-cluster-config --region ${var.region} --name ${module.eks.cluster_name} --resources-vpc-config endpointPublicAccess=true,endpointPrivateAccess=true,publicAccessCidrs=["$(curl -s https://checkip.amazonaws.com)/32"]
 ```
 
 > Note: Remove the escape characters (`\`) around the IP address if present.
