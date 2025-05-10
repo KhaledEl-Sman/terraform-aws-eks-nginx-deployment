@@ -57,8 +57,6 @@ aws eks update-kubeconfig --region <aws_region> --name <cluster_name> --profile 
 aws eks update-cluster-config --region <aws_region> --name <cluster_name> --resources-vpc-config endpointPublicAccess=true,endpointPrivateAccess=true,publicAccessCidrs=["$(curl -s https://checkip.amazonaws.com)/32"]
 ```
 
-> Note: Remove the escape characters (`\`) around the IP address if present.
-
 #### Step 3: Deploy Nginx Application to EKS
 Apply the Kubernetes manifest to deploy the Nginx application with a LoadBalancer service:
 
