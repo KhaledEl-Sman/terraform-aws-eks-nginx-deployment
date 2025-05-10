@@ -1,0 +1,10 @@
+variable "region" { type = string }
+variable "profile" { type = string }
+variable "project_name" { type = string }
+variable "vpc_cidr_block" { type = string }
+variable "private_subnets_cidr_block" { type = list(string) }
+variable "public_subnets_cidr_block" { type = list(string) }
+variable "node_types" { type = list(string) }
+variable "nodes_desired_capacity" { type = list(number) }
+variable "nodes_min_max_capacities" { type = list(list(number)) } # like [[1, 3], [1, 2]]
+variable "principal_arn" { type = string }
