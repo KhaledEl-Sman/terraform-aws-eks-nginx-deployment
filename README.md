@@ -48,13 +48,13 @@ After Terraform finishes, run the two commands from the Terraform outputs to con
 1. Update kubeconfig to connect to the EKS cluster:
 
 ```bash
-aws eks update-kubeconfig --region  --name  --profile 
+aws eks update-kubeconfig --region <aws_region> --name <cluster_name> --profile <aws_profile>
 ```
 
 2. Update the cluster config to enable both public and private endpoint access, allowing your current IP address:
 
 ```bash
-aws eks update-cluster-config --region ${var.region} --name ${module.eks.cluster_name} --resources-vpc-config endpointPublicAccess=true,endpointPrivateAccess=true,publicAccessCidrs=["$(curl -s https://checkip.amazonaws.com)/32"]
+aws eks update-cluster-config --region <aws_region> --name <cluster_name> --resources-vpc-config endpointPublicAccess=true,endpointPrivateAccess=true,publicAccessCidrs=["$(curl -s https://checkip.amazonaws.com)/32"]
 ```
 
 > Note: Remove the escape characters (`\`) around the IP address if present.
